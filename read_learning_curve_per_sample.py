@@ -6,6 +6,7 @@ This is a temporary script file.
 """
 
 import numpy as np
+import platform
 from matplotlib import pyplot as plt
 
 from pathlib import Path
@@ -139,7 +140,10 @@ def get_curve_dictionary (arrModels,fk):
 
     arrPaths= [data_folderEEBD, data_folderMxSp, data_folderFangFr, data_folderFrFang, data_folderDLF]
     for dict_path in arrPaths:
-        dictpatharray = str(dict_path).split('/')
+        if (platform.system() == "Windows"):
+            dictpatharray = str(dict_path).split('\\')
+        else:
+            dictpatharray = str(dict_path).split('/')
         dictname = dictpatharray[len(dictpatharray)-1]
         print(dictname)
         for dictModel in arrModels:
